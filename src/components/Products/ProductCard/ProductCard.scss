@@ -1,0 +1,71 @@
+.card {
+  .card_btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+  }
+  .card_list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    li {
+      position: relative;
+      max-width: 200px;
+      width: 100%;
+      img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+
+      .card_like_btn {
+        position: absolute;
+        top: 5%;
+        left: 80%;
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          background: none;
+          cursor: pointer;
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      a {
+        display: block;
+        padding: 10px;
+
+        h3 {
+            font-size: 20px;
+            color: #000;
+            line-height: 20px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 15px;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        span {
+            color: grey;
+            font-size: 15px;
+            font-weight: normal;
+            line-height: 15px;
+        }
+      }
+    }
+  }
+}
