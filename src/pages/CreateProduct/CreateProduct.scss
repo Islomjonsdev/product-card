@@ -1,0 +1,57 @@
+.create_product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #b0b0b0;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    box-shadow: 0px 24px 54px 0px rgba(0, 104, 174, 0.1);
+    padding: 50px;
+    border-radius: 10px;
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 10px;
+
+      label {
+        font-size: 15px;
+        color: #000;
+        font-weight: normal;
+        line-height: 15px;
+      }
+
+      input {
+        outline: none;
+        background: none;
+        border: 1px solid #b0b0b0;
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    button {
+      padding: 10px 20px;
+      outline: none;
+      cursor: pointer;
+      border-radius: 10px;
+      font-size: 15px;
+      color: #000;
+      border: none;
+      background: #b0b0b0;
+    }
+  }
+}

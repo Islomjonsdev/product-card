@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { instance } from "../../api";
 import Loading from "../Loading/Loading";
+import Button from "../ui/Button/Button";
 import ProductCard from "./ProductCard/ProductCard";
 import "./Products.scss";
 
@@ -37,7 +38,7 @@ const Products = () => {
     <div className="products_cart">
       <div className="container">
         <div className="product_card_btn">
-          <button onClick={handleNavigate}>Create product</button>
+          <Button title={"Create product"} onClick={handleNavigate}/>
         </div>
         <ProductCard product={product} setProduct={setProduct} />
       </div>
