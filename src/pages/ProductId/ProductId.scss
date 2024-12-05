@@ -1,0 +1,43 @@
+.product_id {
+    .container {
+        max-width: 1480px;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .product_id_list {
+        margin-bottom: 15px;
+
+        img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+        }
+    }
+
+    .product_id_btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            border: none;
+            cursor: pointer;
+            background: #65c1ff;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid transparent;
+            transition: 0.3s ease;
+            &:hover {
+                color: #65c1ff;
+                background: #fff;
+                border: 1px solid #65c1ff;
+            }
+        }
+    }
+}

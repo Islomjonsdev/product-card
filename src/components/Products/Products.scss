@@ -7,4 +7,11 @@
         padding-left: 20px;
         padding-right: 20px;
     }
+
+    .product_card_btn {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        margin-bottom: 15px;
+    }
 }

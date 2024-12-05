@@ -10,8 +10,7 @@ import Modal from "../../ui/Modal/Modal";
 const ProductCard = ({ product, setProduct }) => {
   const [openModal, setOpenModal] = useState(false);
   const [like, setLike] = useState([]);
-  console.log(like);
-  
+
   const handleLike = (_id, product) => {
     let cache = like.find((el) => el === _id)
     if (cache) {
@@ -23,9 +22,6 @@ const ProductCard = ({ product, setProduct }) => {
   return (
     <>
       <div className="card">
-        <div className="card_btn">
-          <Button title="Create"  />
-        </div>
         <ul className="card_list">
           {product?.map((card) => {
             const { id, image, title, description, price } = card;
@@ -37,7 +33,7 @@ const ProductCard = ({ product, setProduct }) => {
                       {!like?.includes(id) ? <IoHeartOutline /> : <FcLike />}
                   </button>
                 </div>
-                <Link to={`/${id}`}>
+                <Link to={`/product/${id}`}>
                   <h3>{title}</h3>
                   <p>{description}</p>
                   <span>{price}</span>

@@ -1,13 +1,8 @@
 .card {
-  .card_btn {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-bottom: 15px;
-  }
   .card_list {
     display: flex;
     flex-wrap: wrap;
+    gap: 15px;
     justify-content: space-between;
     li {
       position: relative;
