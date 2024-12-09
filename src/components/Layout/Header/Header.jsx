@@ -20,12 +20,6 @@ const Header = () => {
                 Like
               </Link>
             </li>
-            <li>
-              <Link to={"/cart"}>
-                <AiOutlineShoppingCart />
-                Cart
-              </Link>
-            </li>
           </ul>
         </div>
       </div>

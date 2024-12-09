@@ -1,24 +1,38 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../../ui/Button/Button";
 import { IoHeartOutline } from "react-icons/io5";
 import { FcLike } from "react-icons/fc";
 import "./ProductCard.scss";
-import { useState } from "react";
-import Modal from "../../ui/Modal/Modal";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const ProductCard = ({ product, setProduct }) => {
-  const [openModal, setOpenModal] = useState(false);
-  const [like, setLike] = useState([]);
+  const [like, setLike] = useState(() => {
+      const storedLikes = localStorage.getItem("likedCards")
+      return storedLikes ? JSON.parse(storedLikes) : []
+  });
 
-  const handleLike = (_id, product) => {
-    let cache = like.find((el) => el === _id)
+  useEffect(() => {
+      localStorage.setItem("likedCards", JSON.stringify(like))
+  }, [like])
+  const dispatch = useDispatch();
+
+  const handleLikedCards = (_id, card) => {
+    let cache = like.find((el) => el === _id);
     if (cache) {
-        setLike(like.filter((el) => el == !_id))
-    }else{
-        setLike([...like, _id])
+      setLike(like.filter((el) => el !== _id));
+    } else {
+      setLike([...like, _id]);
     }
+
+    const likedProduct = product.find((item) => item.id === _id);
+  
+    const action = {
+      type: "add_to_like",
+      data: likedProduct
+    };
+    dispatch(action);
   };
+  
   return (
     <>
       <div className="card">
@@ -29,8 +43,8 @@ const ProductCard = ({ product, setProduct }) => {
               <li key={id}>
                 <img src={image} alt="" />
                 <div className="card_like_btn">
-                  <button onClick={() => handleLike(id, product)}>
-                      {!like?.includes(id) ? <IoHeartOutline /> : <FcLike />}
+                  <button onClick={() => handleLikedCards(id, card)}>
+                    {!like?.includes(id) ? <IoHeartOutline /> : <FcLike />}
                   </button>
                 </div>
                 <Link to={`/product/${id}`}>
