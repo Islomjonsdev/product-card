@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom";
+import Loading from "../../components/Loading/Loading";
 import useEditProduct from "../../hooks/useEditProduct";
 import style from "./EditProduct.module.scss";
 
 const EditProduct = () => {
   const { id } = useParams();
-  const { editProduct, setEditProduct, updateProduct, toast } = useEditProduct(id);
+  const { editProduct, setEditProduct, updateProduct, loading } =
+    useEditProduct(id);
   console.log(editProduct);
 
   const handleChangeInput = (e) => {
@@ -19,7 +21,8 @@ const EditProduct = () => {
     e.preventDefault();
     updateProduct(editProduct);
   };
-  
+
+  if (loading) return <Loading />;
 
   return (
     <div className={style.edit_product}>
