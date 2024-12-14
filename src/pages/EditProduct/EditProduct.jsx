@@ -1,50 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { instance } from "../../api";
+import { useParams } from "react-router-dom";
+import useEditProduct from "../../hooks/useEditProduct";
 import style from "./EditProduct.module.scss";
 
 const EditProduct = () => {
-  const navigate = useNavigate();
-  const { id } = useParams(); // Get the product ID from the URL
-  const [updateTitle, setUpdateTitle] = useState("");
-  const [updateDesc, setUpdateDesc] = useState("");
-  const [updatePrice, setUpdatePrice] = useState("");
+  const { id } = useParams();
+  const { editProduct, setEditProduct, updateProduct, toast } = useEditProduct(id);
+  console.log(editProduct);
 
-  useEffect(() => {
-    instance
-      .get(`/work/${id}`)
-      .then((res) => {
-        const { title, description, price } = res?.data;
-        setUpdateTitle(title);
-        setUpdateDesc(description);
-        setUpdatePrice(price);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [id]);
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target;
+    setEditProduct((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleUpdate = (e) => {
     e.preventDefault();
-
-    const dataProduct = {
-      title: updateTitle,
-      description: updateDesc,
-      price: updatePrice,
-    };
-
-    instance
-      .put(`/work/${id}`, dataProduct, {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((res) => {
-        console.log(res?.data);
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    updateProduct(editProduct);
   };
+  
 
   return (
     <div className={style.edit_product}>
@@ -58,24 +33,27 @@ const EditProduct = () => {
           <label htmlFor="">Enter title</label>
           <input
             type="text"
-            value={updateTitle}
-            onChange={(e) => setUpdateTitle(e.target.value)}
+            name="title"
+            value={editProduct.title}
+            onChange={handleChangeInput}
           />
         </div>
         <div>
           <label htmlFor="">Enter description</label>
           <input
             type="text"
-            value={updateDesc}
-            onChange={(e) => setUpdateDesc(e.target.value)}
+            name="description"
+            value={editProduct.description}
+            onChange={handleChangeInput}
           />
         </div>
         <div>
           <label htmlFor="">Enter price</label>
           <input
             type="number"
-            value={updatePrice}
-            onChange={(e) => setUpdatePrice(e.target.value)}
+            name="price"
+            value={editProduct.price}
+            onChange={handleChangeInput}
           />
         </div>
         <button type="submit">Submit</button>
@@ -85,3 +63,43 @@ const EditProduct = () => {
 };
 
 export default EditProduct;
+
+// const [updateTitle, setUpdateTitle] = useState("");
+// const [updateDesc, setUpdateDesc] = useState("");
+// const [updatePrice, setUpdatePrice] = useState("");
+
+// useEffect(() => {
+//   instance
+//     .get(`/work/${id}`)
+//     .then((res) => {
+//       const { title, description, price } = res?.data;
+//       setUpdateTitle(title);
+//       setUpdateDesc(description);
+//       setUpdatePrice(price);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// }, [id]);
+
+// const handleUpdate = (e) => {
+//   e.preventDefault();
+
+//   const dataProduct = {
+//     title: updateTitle,
+//     description: updateDesc,
+//     price: updatePrice,
+//   };
+
+//   instance
+//     .put(`/work/${id}`, dataProduct, {
+//       headers: { "Content-Type": "application/json" },
+//     })
+//     .then((res) => {
+//       console.log(res?.data);
+//       navigate("/");
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
