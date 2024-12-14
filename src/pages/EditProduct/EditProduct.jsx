@@ -5,7 +5,7 @@ import style from "./EditProduct.module.scss";
 
 const EditProduct = () => {
   const { id } = useParams();
-  const { editProduct, setEditProduct, updateProduct, loading } =
+  const { editProduct, setEditProduct, updateProduct, loading, error } =
     useEditProduct(id);
   console.log(editProduct);
 
@@ -23,6 +23,7 @@ const EditProduct = () => {
   };
 
   if (loading) return <Loading />;
+  if(error) return <p>{error.message}</p>
 
   return (
     <div className={style.edit_product}>

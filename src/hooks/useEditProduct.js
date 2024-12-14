@@ -4,6 +4,7 @@ import { instance } from "../api";
 
 const useEditProduct = (id) => {
   const [loading, setLoading] = useState(false);
+  const [ error, setError ] = useState(null)
   const [editProduct, setEditProduct] = useState({
     title: "",
     description: "",
@@ -25,6 +26,7 @@ const useEditProduct = (id) => {
       })
       .catch((err) => {
         console.log(err);
+        setError(err)
       });
       setLoading(true)
   }, [id]);
@@ -43,6 +45,7 @@ const useEditProduct = (id) => {
       .catch((err) => {
         console.log(err);
         setLoading(true);
+        setError(err)
       });
   };
   return {
@@ -50,6 +53,7 @@ const useEditProduct = (id) => {
     setEditProduct,
     updateProduct,
     loading,
+    error
   };
 };
 
