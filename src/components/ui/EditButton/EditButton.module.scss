@@ -1,6 +1,7 @@
-.create_btn {
-    background: #6bf679;
-    width: 200px;
+.edit_button {
+    background: #4ccbf1;
+    max-width: 200px;
+    width: 100%;
     font-size: 18px;
     font-weight: 500;
     border: none;
@@ -12,5 +13,5 @@
     justify-content: center;
     gap: 5px;
     color: #fff;
-    padding: 15px 0px 15px 0px;
+    padding: 10px 0px 10px 0px;
 }

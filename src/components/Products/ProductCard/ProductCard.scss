@@ -38,32 +38,35 @@
         }
       }
 
-      a {
-        display: block;
+      .items {
         padding: 10px;
-
-        h3 {
-            font-size: 20px;
-            color: #000;
-            line-height: 20px;
-            margin-bottom: 5px;
-        }
-
-        p {
-            font-size: 15px;
-            font-weight: normal;
-            line-height: 15px;
-            color: #000;
-            margin-bottom: 5px;
-        }
-
-        span {
-            color: grey;
-            font-size: 15px;
-            font-weight: normal;
-            line-height: 15px;
+        a {  
+          display: block;
+          margin-bottom: 10px;
+          h3 {
+              font-size: 20px;
+              color: #000;
+              line-height: 20px;
+              margin-bottom: 5px;
+          }
+  
+          p {
+              font-size: 15px;
+              font-weight: normal;
+              line-height: 15px;
+              color: #000;
+              margin-bottom: 5px;
+          }
+  
+          span {
+              color: grey;
+              font-size: 15px;
+              font-weight: normal;
+              line-height: 15px;
+          }
         }
       }
+
     }
   }
 }

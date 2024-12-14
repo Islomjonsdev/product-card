@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { instance } from "../../api";
 import Loading from "../Loading/Loading";
 import Button from "../ui/Button/Button";
+import EditButton from "../ui/EditButton/EditButton";
 import ProductCard from "./ProductCard/ProductCard";
 import "./Products.scss";
 
@@ -14,6 +15,7 @@ const Products = () => {
   const handleNavigate = () => {
     navigate("/create-product");
   };
+
   useEffect(() => {
     setLoading(true);
     instance
@@ -38,7 +40,7 @@ const Products = () => {
     <div className="products_cart">
       <div className="container">
         <div className="product_card_btn">
-          <Button title={"Create product"} onClick={handleNavigate}/>
+          <Button title={"Create product"} onClick={handleNavigate} />
         </div>
         <ProductCard product={product} setProduct={setProduct} />
       </div>
